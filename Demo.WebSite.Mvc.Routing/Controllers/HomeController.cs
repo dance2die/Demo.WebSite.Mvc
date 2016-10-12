@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
+using Demo.WebSite.Mvc.Routing.Dal;
+using Demo.WebSite.Mvc.Routing.Models;
 
 namespace Demo.WebSite.Mvc.Routing.Controllers
 {
@@ -11,7 +10,15 @@ namespace Demo.WebSite.Mvc.Routing.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            return View();
+	        var certifiedItems = GetCertifiedItems();
+
+            return View(certifiedItems);
         }
+
+	    private IEnumerable<CertifiedItem> GetCertifiedItems()
+	    {
+		    CertifiedRepository repository = new CertifiedRepository();
+		    return repository.GetCertifiedItems();
+	    }
     }
 }

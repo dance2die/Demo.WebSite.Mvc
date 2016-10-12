@@ -1,12 +1,30 @@
-﻿
+﻿@model IEnumerable<Demo.WebSite.Mvc.Routing.Models.CertifiedItem>
+
+
 @{
-    ViewBag.Title = "Index";
+	ViewBag.Title = "Index";
 }
 
 <h2>Index</h2>
 
 
-
+<table>
+	<thead>
+		<tr>
+			<th>CertifiedItemID</th>
+			<th>CertifiedBatchID</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var certifiedItem in Model)
+		{
+			<tr>
+				<td>@certifiedItem.CertifiedItemID</td>
+				<td>@certifiedItem.CertifiedBatchID</td>
+			</tr>
+		}
+	</tbody>
+</table>
 
 
 
