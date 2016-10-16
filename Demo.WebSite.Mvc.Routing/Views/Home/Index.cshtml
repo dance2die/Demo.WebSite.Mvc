@@ -1,11 +1,15 @@
-﻿@model IEnumerable<Demo.WebSite.Mvc.Routing.Models.CertifiedItem>
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<Demo.WebSite.Mvc.Routing.Models.CertifiedItem>
 
 
 @{
 	ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<div class="pagedList" data-oft-target="#batchList">
+	@Html.PagedListPager(Model, page => Url.Action("Index", new { page }),
+		PagedListRenderOptions.ClassicPlusFirstAndLast))
+</div>
 
 
 <table>
@@ -15,7 +19,7 @@
 			<th>CertifiedBatchID</th>
 		</tr>
 	</thead>
-	<tbody>
+	<tbody id="batchList">
 		@foreach (var certifiedItem in Model)
 		{
 			<tr>

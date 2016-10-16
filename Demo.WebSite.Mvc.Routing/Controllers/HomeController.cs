@@ -2,23 +2,25 @@
 using System.Web.Mvc;
 using Demo.WebSite.Mvc.Routing.Dal;
 using Demo.WebSite.Mvc.Routing.Models;
+using PagedList;
 
 namespace Demo.WebSite.Mvc.Routing.Controllers
 {
     public class HomeController : Controller
     {
         // GET: Home
-        public ActionResult Index()
+        public ActionResult Index(int page = 1)
         {
-	        var certifiedItems = GetCertifiedItems();
+	        var certifiedItems = GetCertifiedItems(page);
 
             return View(certifiedItems);
         }
 
-	    private IEnumerable<CertifiedItem> GetCertifiedItems()
+	    private IPagedList<CertifiedItem> GetCertifiedItems(int page)
 	    {
 		    CertifiedRepository repository = new CertifiedRepository();
-		    return repository.GetCertifiedItems();
+		    const int pageSize = 10;
+		    return repository.GetCertifiedItems().ToPagedList(page, pageSize);
 	    }
     }
 }
