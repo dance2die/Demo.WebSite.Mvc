@@ -130,6 +130,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Models\CertifiedBatch.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Dal\BaseRepository.cs" />
     <Compile Include="Dal\CertifiedRepository.cs" />

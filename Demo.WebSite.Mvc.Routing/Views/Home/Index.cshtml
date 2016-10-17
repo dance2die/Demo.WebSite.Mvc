@@ -1,5 +1,5 @@
 ﻿@using PagedList.Mvc
-@model PagedList.IPagedList<Demo.WebSite.Mvc.Routing.Models.CertifiedItem>
+@model PagedList.IPagedList<Demo.WebSite.Mvc.Routing.Models.CertifiedBatch>
 
 
 @{
@@ -15,16 +15,16 @@
 <table>
 	<thead>
 		<tr>
-			<th>CertifiedItemID</th>
 			<th>CertifiedBatchID</th>
+			<th>Date Created</th>
 		</tr>
 	</thead>
 	<tbody id="batchList">
-		@foreach (var certifiedItem in Model)
+		@foreach (var batch in Model)
 		{
 			<tr>
-				<td>@certifiedItem.CertifiedItemID</td>
-				<td>@certifiedItem.CertifiedBatchID</td>
+				<td>@batch.CertifiedBatchID</td>
+				<td>@batch.DateCreated</td>
 			</tr>
 		}
 	</tbody>

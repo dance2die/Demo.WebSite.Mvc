@@ -7,6 +7,15 @@ namespace Demo.WebSite.Mvc.Routing.Dal
 {
 	public class CertifiedRepository : BaseRepository
 	{
+		public IEnumerable<CertifiedBatch> GetCertifiedBatches()
+		{
+			using (var connection = GetOpenConnection())
+			{
+				const string spName = "spGetCertifiedBatches";
+				return connection.Query<CertifiedBatch>(spName, commandType: CommandType.StoredProcedure);
+			}
+		}
+
 		public IEnumerable<CertifiedItem> GetCertifiedItems()
 		{
 			using (var connection = GetOpenConnection())

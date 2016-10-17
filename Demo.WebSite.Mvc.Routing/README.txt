@@ -41,6 +41,20 @@ begin
 end
 GO
 
+USE [Test]
+GO
+/****** Object:  StoredProcedure [dbo].[spGetCertifiedItems]    Script Date: 10/17/2016 06:44:13 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create procedure [dbo].[spGetCertifiedBatches]
+as
+begin
+	select	*
+	from	tblCertifiedBatch (nolock)
+end
+GO
 
 insert tblCertifiedItem(CertifiedBatchID, Address, State, Zip) select 1, 'a1', 's1', '11111'
 insert tblCertifiedItem(CertifiedBatchID, Address, State, Zip) select 1, 'a1', 's1', '11111'

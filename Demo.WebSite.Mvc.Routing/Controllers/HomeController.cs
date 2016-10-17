@@ -7,19 +7,27 @@ namespace Demo.WebSite.Mvc.Routing.Controllers
 {
     public class HomeController : Controller
     {
-        // GET: Home
-        public ActionResult Index(int page = 1)
-        {
-	        var certifiedItems = GetCertifiedItems(page);
+	    private const int PAGE_SIZE = 5;
 
-            return View(certifiedItems);
+		private readonly CertifiedRepository _repository = new CertifiedRepository();
+
+		public ActionResult Index(int page = 1)
+        {
+			//var certifiedItems = GetCertifiedItems(page);
+			//return View(certifiedItems);
+			var certifiedBatches = GetCertifiedBatches(page);
+
+            return View(certifiedBatches);
         }
 
-	    private IPagedList<CertifiedItem> GetCertifiedItems(int page)
+	    private IPagedList<CertifiedBatch> GetCertifiedBatches(int page)
 	    {
-		    CertifiedRepository repository = new CertifiedRepository();
-		    const int pageSize = 5;
-		    return repository.GetCertifiedItems().ToPagedList(page, pageSize);
+			return _repository.GetCertifiedBatches().ToPagedList(page, PAGE_SIZE);
+		}
+
+		private IPagedList<CertifiedItem> GetCertifiedItems(int page)
+	    {
+		    return _repository.GetCertifiedItems().ToPagedList(page, PAGE_SIZE);
 	    }
     }
 }
