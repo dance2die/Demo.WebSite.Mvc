@@ -16,12 +16,13 @@ namespace Demo.WebSite.Mvc.Routing.Dal
 			}
 		}
 
-		public IEnumerable<CertifiedItem> GetCertifiedItems()
+		public IEnumerable<CertifiedItem> GetCertifiedItems(int certifiedBatchId)
 		{
 			using (var connection = GetOpenConnection())
 			{
 				const string spName = "spGetCertifiedItems";
-				return connection.Query<CertifiedItem>(spName, commandType: CommandType.StoredProcedure);
+				return connection.Query<CertifiedItem>(spName, 
+					new {CertifiedBatchID = certifiedBatchId}, commandType: CommandType.StoredProcedure);
 			}
 		}
 	}

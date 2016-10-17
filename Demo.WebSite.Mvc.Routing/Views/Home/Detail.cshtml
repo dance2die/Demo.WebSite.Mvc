@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Demo.WebSite.Mvc.Routing.Models.CertifiedItem>
+
+@{
+    ViewBag.Title = "Detail";
+}
+
+<h2>Detail</h2>
+
+<table>
+	<thead>
+		<tr>
+			<th>CertifiedItemID</th>
+			<th>CertifiedBatchID</th>
+			<th>Address</th>
+			<th>State</th>
+			<th>Zip</th>
+			<th>ImagePath</th>
+			<th>DateCreated</th>
+		</tr>
+	</thead>
+	<tbody id="itemList">
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>@item.CertifiedItemID</td>
+				<td>@item.CertifiedBatchID</td>
+				<td>@item.Address</td>
+				<td>@item.State</td>
+				<td>@item.Zip</td>
+				<td>@item.ImagePath</td>
+				<td>@item.DateCreated</td>
+			</tr>
+		}
+	</tbody>
+</table>
+

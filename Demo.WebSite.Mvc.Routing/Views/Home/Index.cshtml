@@ -23,6 +23,7 @@
 		@foreach (var batch in Model)
 		{
 			<tr>
+				<td>@Html.ActionLink(batch.CertifiedBatchID.ToString(), "Detail", new {certifiedBatchId = batch.CertifiedBatchID})</td>
 				<td>@batch.CertifiedBatchID</td>
 				<td>@batch.DateCreated</td>
 			</tr>
