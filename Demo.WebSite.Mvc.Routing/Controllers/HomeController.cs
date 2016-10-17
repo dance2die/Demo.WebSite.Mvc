@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using Demo.WebSite.Mvc.Routing.Dal;
 using Demo.WebSite.Mvc.Routing.Models;
 using PagedList;
@@ -19,7 +18,7 @@ namespace Demo.WebSite.Mvc.Routing.Controllers
 	    private IPagedList<CertifiedItem> GetCertifiedItems(int page)
 	    {
 		    CertifiedRepository repository = new CertifiedRepository();
-		    const int pageSize = 10;
+		    const int pageSize = 5;
 		    return repository.GetCertifiedItems().ToPagedList(page, pageSize);
 	    }
     }
