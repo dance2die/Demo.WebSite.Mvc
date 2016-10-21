@@ -8,6 +8,12 @@
 			$this.prop('disabled', true);
 		}
 	});
+
+	//var handleVoidClick = function(event) {
+	//	alert('void clicked!');
+	//}
+
+	//$("#voidSubmit").click(handleVoidClick);
 });
 
 

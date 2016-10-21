@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Web.Mvc;
 using Demo.WebSite.Mvc.Routing.Dal;
 using Demo.WebSite.Mvc.Routing.Models;
@@ -34,6 +35,15 @@ namespace Demo.WebSite.Mvc.Routing.Controllers
 	    private IEnumerable<CertifiedItem> GetCertifiedItems(int certifiedBatchId)
 	    {
 		    return _repository.GetCertifiedItems(certifiedBatchId);
+	    }
+
+		[HttpPost]
+	    public ActionResult VoidSubmit(IEnumerable<CertifiedItem> certifiedItems)
+	    //public ActionResult VoidSubmit(object items)
+	    {
+		    Console.WriteLine(certifiedItems);
+
+		    return View("Detail", certifiedItems);
 	    }
     }
 }

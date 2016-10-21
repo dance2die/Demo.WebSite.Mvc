@@ -14,33 +14,61 @@
 	@Html.ActionLink("Return to Batch Screen", "Index")
 </div>
 
-<table>
-	<thead>
-		<tr>
-			<th>CertifiedItemID</th>
-			<th>CertifiedBatchID</th>
-			<th>Address</th>
-			<th>State</th>
-			<th>Zip</th>
-			<th>ImagePath</th>
-			<th>DateCreated</th>
-			<th>Is Voided</th>
-		</tr>
-	</thead>
-	<tbody id="itemList">
-		@foreach (var item in Model)
-		{
+@using (Html.BeginForm("VoidSubmit", "Home", FormMethod.Post))
+{
+
+	<input id="voidSubmit" type="submit" class="btn btn-success" value="Void" />
+
+	<table>
+		<thead>
 			<tr>
-				<td>@item.CertifiedItemID</td>
-				<td>@item.CertifiedBatchID</td>
-				<td>@item.Address</td>
-				<td>@item.State</td>
-				<td>@item.Zip</td>
-				<td>@item.ImagePath</td>
-				<td>@item.DateCreated</td>
-				<td>@Html.CheckBoxFor(_ => item.IsVoided, new {id = "checkbox_" + item.CertifiedItemID})</td>
+				<th>CertifiedItemID</th>
+				<th>CertifiedBatchID</th>
+				<th>Address</th>
+				<th>State</th>
+				<th>Zip</th>
+				<th>ImagePath</th>
+				<th>DateCreated</th>
+				<th>Is Voided</th>
 			</tr>
-		}
-	</tbody>
-</table>
+		</thead>
+		<tbody id="itemList">
+			@foreach (var item in Model)
+				{
+				<tr>
+					<td>
+						@Html.DisplayFor(_ => item.CertifiedItemID)
+						@Html.HiddenFor(_ => item.CertifiedItemID)
+					</td>
+					<td>
+						@Html.DisplayFor(_ => item.CertifiedBatchID)
+						@Html.HiddenFor(_ => item.CertifiedBatchID)
+					</td>
+					<td>
+						@Html.DisplayFor(_ => item.Address)
+						@Html.HiddenFor(_ => item.Address)
+					</td>
+					<td>
+						@Html.DisplayFor(_ => item.State)
+						@Html.HiddenFor(_ => item.State)
+					</td>
+					<td>
+						@Html.DisplayFor(_ => item.Zip)
+						@Html.HiddenFor(_ => item.Zip)
+					</td>
+					<td>
+						@Html.DisplayFor(_ => item.ImagePath)
+						@Html.HiddenFor(_ => item.ImagePath)
+					</td>
+					<td>
+						@Html.DisplayFor(_ => item.DateCreated)
+						@Html.HiddenFor(_ => item.DateCreated)
+					</td>
+					<td>@Html.CheckBoxFor(_ => item.IsVoided, new { id = "checkbox_" + item.CertifiedItemID })</td>
+				</tr>
+				}
+		</tbody>
+	</table>
+}
+
 
