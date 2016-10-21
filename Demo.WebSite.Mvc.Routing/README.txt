@@ -89,9 +89,42 @@ insert tblCertifiedItem(CertifiedBatchID, Address, State, Zip) select 4, 'a4', '
 insert tblCertifiedItem(CertifiedBatchID, Address, State, Zip) select 4, 'a4', 's4', '44444'
 insert tblCertifiedItem(CertifiedBatchID, Address, State, Zip) select 5, 'a5', 's5', '55555'
 
+GO
 
 
+create table Pending 
+(
+	ID					int identity(1, 1) primary key,
+	CertifiedItemID		int not null
+)
+GO
 
+insert	Pending(CertifiedItemID) select 1
+insert	Pending(CertifiedItemID) select 2
+insert	Pending(CertifiedItemID) select 7
+insert	Pending(CertifiedItemID) select 8
+
+GO
+
+
+USE [Test]
+GO
+/****** Object:  StoredProcedure [dbo].[spGetCertifiedItems]    Script Date: 10/21/2016 05:29:51 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER procedure [dbo].[spGetCertifiedItems]
+	@CertifiedBatchID	int
+as
+begin
+	select	ci.CertifiedItemID, CertifiedBatchID, Address,
+			State, Zip, ImagePath,
+			DateCreated, IsVoided = case when p.ID is null then 0 else 1 end
+	from	tblCertifiedItem ci (nolock)
+			left join Pending p (nolock) on p.CertifiedItemID = ci.CertifiedItemID
+	where	ci.CertifiedBatchID = @CertifiedBatchID
+end
 
 
 

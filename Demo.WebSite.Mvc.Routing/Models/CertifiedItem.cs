@@ -11,5 +11,6 @@ namespace Demo.WebSite.Mvc.Routing.Models
 		public string Zip { get; set; }
 		public string ImagePath { get; set; }
 		public DateTime DateCreated { get; set; }
+		public bool IsVoided { get; set; }
 	}
 }

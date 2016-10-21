@@ -1,7 +1,11 @@
 ﻿@model IEnumerable<Demo.WebSite.Mvc.Routing.Models.CertifiedItem>
 
 @{
-    ViewBag.Title = "Detail";
+	ViewBag.Title = "Detail";
+}
+
+@section bottomScript {
+	<script src="~/Scripts/Home/Detail.js"></script>
 }
 
 <h2>Detail</h2>
@@ -20,6 +24,7 @@
 			<th>Zip</th>
 			<th>ImagePath</th>
 			<th>DateCreated</th>
+			<th>Is Voided</th>
 		</tr>
 	</thead>
 	<tbody id="itemList">
@@ -33,6 +38,7 @@
 				<td>@item.Zip</td>
 				<td>@item.ImagePath</td>
 				<td>@item.DateCreated</td>
+				<td>@Html.CheckBoxFor(_ => item.IsVoided, new {id = "checkbox_" + item.CertifiedItemID})</td>
 			</tr>
 		}
 	</tbody>
