@@ -11,7 +11,7 @@ namespace Demo.WebSite.Mvc.Routing.Controllers
 		public ActionResult Index()
 		{
 			var initialData = new[] {
-				new Person { PersonId = 1, FirstName = "Sung1", LastName = "Meister1" },
+				new Person { PersonId = 1, FirstName = "Sung1", LastName = "Meister1", IsSupervisor = true},
 				new Person { PersonId = 2, FirstName = "Sung2", LastName = "Meister2" },
 				new Person { PersonId = 3, FirstName = "Sung3", LastName = "Meister3" },
 			};
@@ -20,7 +20,6 @@ namespace Demo.WebSite.Mvc.Routing.Controllers
 
 		public ViewResult Submit(IEnumerable<Person> persons)
 		{
-			
 			return View("Index", persons);
 		}
 	}
@@ -30,5 +29,6 @@ namespace Demo.WebSite.Mvc.Routing.Controllers
 		public int PersonId { get; set; }
 		public string FirstName { get; set; }
 		public string LastName { get; set; }
+		public bool IsSupervisor { get; set; } = false;
 	}
 }
