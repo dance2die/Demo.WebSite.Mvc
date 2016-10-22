@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using Demo.WebSite.Mvc.Routing.Dal;
 using Demo.WebSite.Mvc.Routing.Models;
@@ -22,7 +23,7 @@ namespace Demo.WebSite.Mvc.Routing.Controllers
 
 	    public ActionResult Detail(int certifiedBatchId)
 	    {
-		    var certifiedItems = GetCertifiedItems(certifiedBatchId);
+		    var certifiedItems = GetCertifiedItems(certifiedBatchId).ToList();
 
 		    return View(certifiedItems);
 	    }

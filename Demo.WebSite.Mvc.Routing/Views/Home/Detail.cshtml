@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Demo.WebSite.Mvc.Routing.Models.CertifiedItem>
+﻿@model IList<Demo.WebSite.Mvc.Routing.Models.CertifiedItem>
 
 @{
 	ViewBag.Title = "Detail";
@@ -33,38 +33,38 @@
 			</tr>
 		</thead>
 		<tbody id="itemList">
-			@foreach (var item in Model)
-				{
+			@for (int i = 0; i < Model.Count; i++) 
+			{
 				<tr>
 					<td>
-						@Html.DisplayFor(_ => item.CertifiedItemID)
-						@Html.HiddenFor(_ => item.CertifiedItemID)
+						@Html.DisplayFor(_ => Model[i].CertifiedItemID)
+						@Html.HiddenFor(_ => Model[i].CertifiedItemID)
 					</td>
 					<td>
-						@Html.DisplayFor(_ => item.CertifiedBatchID)
-						@Html.HiddenFor(_ => item.CertifiedBatchID)
+						@Html.DisplayFor(_ => Model[i].CertifiedBatchID)
+						@Html.HiddenFor(_ => Model[i].CertifiedBatchID)
 					</td>
 					<td>
-						@Html.DisplayFor(_ => item.Address)
-						@Html.HiddenFor(_ => item.Address)
+						@Html.DisplayFor(_ => Model[i].Address)
+						@Html.HiddenFor(_ => Model[i].Address)
 					</td>
 					<td>
-						@Html.DisplayFor(_ => item.State)
-						@Html.HiddenFor(_ => item.State)
+						@Html.DisplayFor(_ => Model[i].State)
+						@Html.HiddenFor(_ => Model[i].State)
 					</td>
 					<td>
-						@Html.DisplayFor(_ => item.Zip)
-						@Html.HiddenFor(_ => item.Zip)
+						@Html.DisplayFor(_ => Model[i].Zip)
+						@Html.HiddenFor(_ => Model[i].Zip)
 					</td>
 					<td>
-						@Html.DisplayFor(_ => item.ImagePath)
-						@Html.HiddenFor(_ => item.ImagePath)
+						@Html.DisplayFor(_ => Model[i].ImagePath)
+						@Html.HiddenFor(_ => Model[i].ImagePath)
 					</td>
 					<td>
-						@Html.DisplayFor(_ => item.DateCreated)
-						@Html.HiddenFor(_ => item.DateCreated)
+						@Html.DisplayFor(_ => Model[i].DateCreated)
+						@Html.HiddenFor(_ => Model[i].DateCreated)
 					</td>
-					<td>@Html.CheckBoxFor(_ => item.IsVoided, new { id = "checkbox_" + item.CertifiedItemID })</td>
+					<td>@Html.CheckBoxFor(_ => Model[i].IsVoided, new { id = "checkbox_" + Model[i].CertifiedItemID })</td>
 				</tr>
 				}
 		</tbody>
