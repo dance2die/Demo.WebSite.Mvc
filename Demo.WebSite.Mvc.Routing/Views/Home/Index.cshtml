@@ -6,35 +6,6 @@
 	ViewBag.Title = "Index";
 }
 
-<div class="pagedList" data-oft-target="#batchList">
-	@Html.PagedListPager(Model, page => Url.Action("Index", new { page }),
-		PagedListRenderOptions.ClassicPlusFirstAndLast)
-</div>
-
-
-<table>
-	<thead>
-		<tr>
-			<th>CertifiedBatchID</th>
-			<th>Date Created</th>
-		</tr>
-	</thead>
-	<tbody id="batchList">
-		@foreach (var batch in Model)
-		{
-			<tr>
-				<td>@Html.ActionLink(batch.CertifiedBatchID.ToString(), "Detail", new {certifiedBatchId = batch.CertifiedBatchID})</td>
-				<td>@batch.DateCreated</td>
-			</tr>
-		}
-	</tbody>
-</table>
-
-
-
-
-
-
-
+@Html.Partial("_Batches", Model)
 
 

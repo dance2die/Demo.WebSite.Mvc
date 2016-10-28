@@ -18,6 +18,11 @@ namespace Demo.WebSite.Mvc.Routing.Controllers
         {
 			var certifiedBatches = GetCertifiedBatches(page);
 
+	        if (Request.IsAjaxRequest())
+	        {
+		        return PartialView("_Batches", certifiedBatches);
+	        }
+
             return View(certifiedBatches);
         }
 
