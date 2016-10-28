@@ -1,27 +1,28 @@
 ﻿@using PagedList.Mvc
 @model PagedList.IPagedList<Demo.WebSite.Mvc.Routing.Models.CertifiedBatch>
 
-<div class="pagedList" data-oft-target="#batchList">
-	@Html.PagedListPager(Model, page => Url.Action("Index", new { page }),
-		PagedListRenderOptions.ClassicPlusFirstAndLast)
-</div>
+<div id="certifiedBatchList">
+	<div class="pagedList" data-oft-target="#certifiedBatchList">
+		@Html.PagedListPager(Model, page => Url.Action("Index", new {page}),
+			PagedListRenderOptions.ClassicPlusFirstAndLast)
+	</div>
 
 
-<table>
-	<thead>
-	<tr>
-		<th>CertifiedBatchID</th>
-		<th>Date Created</th>
-	</tr>
-	</thead>
-	<tbody id="batchList">
-	@foreach (var batch in Model)
-	{
+	<table>
+		<thead>
 		<tr>
-			<td>@Html.ActionLink(batch.CertifiedBatchID.ToString(), "Detail", new { certifiedBatchId = batch.CertifiedBatchID })</td>
-			<td>@batch.DateCreated</td>
+			<th>CertifiedBatchID</th>
+			<th>Date Created</th>
 		</tr>
-	}
-	</tbody>
-</table>
+		</thead>
+		<tbody id="batchList">
+		@foreach (var batch in Model)
+		{
+			<tr>
+				<td>@Html.ActionLink(batch.CertifiedBatchID.ToString(), "Detail", new {certifiedBatchId = batch.CertifiedBatchID})</td>
+				<td>@batch.DateCreated</td>
+			</tr>
+		}
+		</tbody>
+	</table></div>
 
