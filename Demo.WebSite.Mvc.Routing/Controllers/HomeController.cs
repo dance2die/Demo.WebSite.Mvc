@@ -10,7 +10,7 @@ namespace Demo.WebSite.Mvc.Routing.Controllers
 {
     public class HomeController : Controller
     {
-	    private const int PAGE_SIZE = 3;
+	    private const int PAGE_SIZE = 10;
 
 		private readonly CertifiedRepository _repository = new CertifiedRepository();
 

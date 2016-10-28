@@ -126,6 +126,31 @@ begin
 	where	ci.CertifiedBatchID = @CertifiedBatchID
 end
 
+GO
+
+
+
+declare	@counter int  = 6
+while @counter <= 100 begin
+
+	declare	@batchID int
+	insert tblCertifiedBatch default values
+
+	select	@batchID = SCOPE_IDENTITY()
+	declare	@counterString varchar(100) = cast(@batchID as varchar)
+
+	insert tblCertifiedItem(CertifiedBatchID, Address, State, Zip) select @batchID, 'a' + @counterString, 's' + @counterString, replicate(@counterString, 5)
+
+	set @counter = @counter + 1
+end
+
+
+select	*
+from	tblCertifiedItem
+
+select	*
+from	tblCertifiedBatch
+
 
 
 
